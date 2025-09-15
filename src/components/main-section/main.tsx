@@ -5,6 +5,7 @@ import Carousel from "./carousel-component/carousel";
 
 const Main = () => {
   const [currentImage, setCurrentImage] = useState<string>(Product_Styled.src);
+  const [mounted, setMounted] = useState(false);
 
   // Array of image sources
   const images = [Product_Styled.src, MODEL_STYLED.src];
@@ -87,6 +88,7 @@ const Main = () => {
       </a>
     </div>,
   ];
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       const randomImage = images[Math.floor(Math.random() * images.length)];
@@ -94,6 +96,10 @@ const Main = () => {
     }, 1000);
 
     return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   return (
@@ -118,17 +124,19 @@ const Main = () => {
           <div className="first-products">
             <div className="video">
               <a href="https://us.pandora.net/en/collections/disney/">
-                <video
-                  src="//cdn.media.amplience.net/v/pandora/Q324_Disney_Villains_Animation_03_The_Evil_Queen_15s_4x5_Clean/mp4_720p"
-                  autoPlay
-                  muted
-                  loop
-                ></video>
+                {mounted && (
+                  <video
+                    src="//cdn.media.amplience.net/v/pandora/Q324_Disney_Villains_Animation_03_The_Evil_Queen_15s_4x5_Clean/mp4_720p"
+                    autoPlay
+                    muted
+                    loop
+                  ></video>
+                )}
               </a>
             </div>
 
             <div className="best-sellers">
-              <a href="https://us.pandora.net/en/charms-bracelets/bracelets/tennis-bracelets/#contentID=135d7467-0802-4412-b02e-bc520db56873&item=4">
+              <a href="https://">
                 <img
                   className="image-sellers"
                   alt="Best Sellers"
@@ -139,7 +147,7 @@ const Main = () => {
           </div>
           <div className="second-products">
             <div className="engraving">
-              <a href="https://us.pandora.net/en/engravable-jewelry/">
+              <a href="https://">
                 <img
                   alt="Engraving"
                   src="//cdn.media.amplience.net/i/pandora/REF894404_AW24_E_ENGRV_Ecomm_M43_BLANK_NEW?fmt=auto&qlt=60&crop={59.01%},{14.66%},{26.96%},{80.77%}"
@@ -147,7 +155,7 @@ const Main = () => {
               </a>
             </div>
             <div className="teninis">
-              <a href="https://us.pandora.net/en/charms-bracelets/bracelets/tennis-bracelets/">
+              <a href="https://">
                 <img
                   alt="Teninis Bracelets"
                   src="//cdn.media.amplience.net/i/pandora/HIGH_Q124_Editorial_Feb_Most_Loved_Product_04_RGB?fmt=auto&qlt=60&crop={39.25%},{22.62%},{23.6%},{47.24%}"
@@ -157,7 +165,7 @@ const Main = () => {
           </div>
           <div className="third-products">
             <div className="rings">
-              <a href="https://us.pandora.net/en/rings/rings/promise-rings/">
+              <a href="https://">
                 <img
                   alt="Rings"
                   src="//cdn.media.amplience.net/i/pandora/Q324_E_PDP_MODEL_STYLED_19_RGB?fmt=auto&qlt=60&crop={22.9%},{13.75%},{31.05%},{46.55%}"
@@ -165,7 +173,7 @@ const Main = () => {
               </a>
             </div>
             <div className="halloween">
-              <a href="https://us.pandora.net/en/discover/stories/halloween-jewelry/">
+              <a href="https://">
                 <img
                   alt="Halloween"
                   src="//cdn.media.amplience.net/i/pandora/MEDIUM_Q324-OCT-SOME-IG-GRID-02B?fmt=auto&qlt=60&crop={7.87%},{6.15%},{92.13%},{73.7%}"
@@ -194,35 +202,23 @@ const Main = () => {
           <img src="/discoverPandora.png" alt="Discover Pandora" />
         </div>
         <div className="products">
-          <a
-            className="charms"
-            href="https://us.pandora.net/en/charms-bracelets/charms/#contentID=6589c570-5a0a-4747-932c-2b6fde16dde7&item=0"
-          >
+          <a className="charms" href="/">
             <img src="/charms.png" alt="charms" />
             <h2>CHARMS</h2>
           </a>
-          <a
-            className="bracelets"
-            href="https://us.pandora.net/en/charms-bracelets/bracelets/"
-          >
+          <a className="bracelets" href="/">
             <img src="/bracelets.png" alt="bracelets" />
             <h2>BRACELETS</h2>
           </a>
-          <a className="rings" href="https://us.pandora.net/en/rings/rings/">
+          <a className="rings" href="/">
             <img src="/rings.png" alt="rings" />
             <h2>RINGS</h2>
           </a>
-          <a
-            className="necklaces"
-            href="https://us.pandora.net/en/necklaces-pendants/necklaces-pendants/"
-          >
+          <a className="necklaces" href="/">
             <img src="/necklaces.png" alt="necklaces" />
             <h2>NECKLACE</h2>
           </a>
-          <a
-            className="earrings"
-            href="https://us.pandora.net/en/earrings/earrings/#contentID=6589c570-5a0a-4747-932c-2b6fde16dde7&item=4"
-          >
+          <a className="earrings" href="/">
             <img src="/Earrings.png" alt="Earrings" />
             <h2>EARRINGS</h2>
           </a>
